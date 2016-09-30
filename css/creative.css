@@ -350,13 +350,14 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: white;
-  background-color: #222222;
+  background-color: #ee4b28;
   border-color: #ed431f;
 }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   background-image: none;
+  filter: blur(5px);
 }
 .btn-primary.disabled,
 .btn-primary[disabled],
