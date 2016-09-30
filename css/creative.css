@@ -357,7 +357,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   background-image: none;
-  filter: blur(5px);
+  filter: blur(20px);
 }
 .btn-primary.disabled,
 .btn-primary[disabled],
