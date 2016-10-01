@@ -30,7 +30,7 @@ body {
 }
 
 hr {
-    border-color: #3C76F0;
+    border-color: #7A291E;
     border-width: 3px;
     max-width: 50px
 }
@@ -41,7 +41,7 @@ hr.light {
 
 a {
     transition: all .35s;
-    color: #3C76F0
+    color: #7A291E
 }
 
 a:focus, a:hover {
@@ -55,7 +55,7 @@ p {
 }
 
 .bg-primary {
-    background-color: #3C76F0
+    background-color: #7A291E
 }
 
 .bg-dark {
@@ -91,7 +91,7 @@ aside {
 }
 
 .navbar-default .navbar-header .navbar-brand {
-    color: #3C76F0;
+    color: #7A291E;
     font-weight: 700;
     text-transform: uppercase
 }
@@ -115,11 +115,11 @@ aside {
 }
 
 .navbar-default .nav>li>a:focus:hover, .navbar-default .nav>li>a:hover {
-    color: #3C76F0
+    color: #7A291E
 }
 
 .navbar-default .nav>li.active>a, .navbar-default .nav>li.active>a:focus {
-    color: #3C76F0!important;
+    color: #7A291E!important;
     background-color: transparent
 }
 
@@ -149,7 +149,7 @@ aside {
         border-color: rgba(34, 34, 34, .05)
     }
     .navbar-default.affix .navbar-header .navbar-brand {
-        color: #3C76F0;
+        color: #7A291E;
         font-size: 14px
     }
     .navbar-default.affix .navbar-header .navbar-brand:focus, .navbar-default.affix .navbar-header .navbar-brand:hover {
@@ -159,7 +159,7 @@ aside {
         color: #222
     }
     .navbar-default.affix .nav>li>a:focus:hover, .navbar-default.affix .nav>li>a:hover {
-        color: #3C76F0
+        color: #7A291E
     }
 }
 
@@ -313,7 +313,7 @@ header .header-content .header-content-inner p {
 }
 
 .text-primary {
-    color: #3C76F0
+    color: #7A291E
 }
 
 .no-gutter>[class*=col-] {
@@ -346,8 +346,8 @@ header .header-content .header-content-inner p {
 
 .btn-primary {
     color: #fff;
-    background-color: #3C76F0;
-    border-color: #3C76F0;
+    background-color: #7A291E;
+    border-color: #7A291E;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s
@@ -360,12 +360,12 @@ header .header-content .header-content-inner p {
 }
 
 .btn-primary.disabled, .btn-primary.disabled.active, .btn-primary.disabled.focus, .btn-primary.disabled:active, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled], .btn-primary[disabled].active, .btn-primary[disabled].focus, .btn-primary[disabled]:active, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary.active, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover {
-    background-color: #3C76F0;
-    border-color: #3C76F0
+    background-color: #7A291E;
+    border-color: #7A291E
 }
 
 .btn-primary .badge {
-    color: #3C76F0;
+    color: #7A291E;
     background-color: #fff
 }
 
