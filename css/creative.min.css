@@ -177,7 +177,11 @@ header {
 header .header-content {
     padding: 100px 15px
 }
-
+  header .header-content .header-content-inner .pic {
+    border-radius: 50%;
+    width: 150px;
+    margin: 20px;
+  }
 header .header-content .header-content-inner h1 {
     font-weight: 700;
     text-transform: uppercase;
