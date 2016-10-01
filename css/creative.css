@@ -156,7 +156,6 @@ header {
   -o-background-size: cover;
   background-position: center;
   background-image: url('../img/header.jpg');
-  filter: blur(3px);
   text-align: center;
   color: white;
 }
