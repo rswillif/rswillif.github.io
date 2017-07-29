@@ -30,7 +30,7 @@ body {
 }
 
 hr {
-    border-color: #7A291E;
+    border-color: #961D31;
     border-width: 3px;
     max-width: 50px
 }
@@ -41,7 +41,7 @@ hr.light {
 
 a {
     transition: all .35s;
-    color: #7A291E
+    color: #961D31
 }
 
 a:focus, a:hover {
@@ -55,7 +55,7 @@ p {
 }
 
 .bg-primary {
-    background-color: #7A291E
+    background-color: #961D31
 }
 
 .bg-dark {
@@ -91,7 +91,7 @@ aside {
 }
 
 .navbar-default .navbar-header .navbar-brand {
-    color: #7A291E;
+    color: #961D31;
     font-weight: 700;
     text-transform: uppercase
 }
@@ -115,11 +115,11 @@ aside {
 }
 
 .navbar-default .nav>li>a:focus:hover, .navbar-default .nav>li>a:hover {
-    color: #7A291E
+    color: #961D31
 }
 
 .navbar-default .nav>li.active>a, .navbar-default .nav>li.active>a:focus {
-    color: #7A291E!important;
+    color: #961D31!important;
     background-color: transparent
 }
 
@@ -149,7 +149,7 @@ aside {
         border-color: rgba(34, 34, 34, .05)
     }
     .navbar-default.affix .navbar-header .navbar-brand {
-        color: #7A291E;
+        color: #961D31;
         font-size: 14px
     }
     .navbar-default.affix .navbar-header .navbar-brand:focus, .navbar-default.affix .navbar-header .navbar-brand:hover {
@@ -159,7 +159,7 @@ aside {
         color: #222
     }
     .navbar-default.affix .nav>li>a:focus:hover, .navbar-default.affix .nav>li>a:hover {
-        color: #7A291E
+        color: #961D31
     }
 }
 
@@ -170,7 +170,7 @@ header {
     background-size: cover;
     -o-background-size: cover;
     background-position: center;
-    background-image: url(../img/header.jpg);
+    background-image: url(../img/header.png);
     color: #fff
 }
 
@@ -322,7 +322,7 @@ header .header-content .header-content-inner p {
 }
 
 .text-primary {
-    color: #7A291E
+    color: #961D31
 }
 
 .no-gutter>[class*=col-] {
@@ -355,8 +355,8 @@ header .header-content .header-content-inner p {
 
 .btn-primary {
     color: #fff;
-    background-color: #7A291E;
-    border-color: #7A291E;
+    background-color: #961D31;
+    border-color: #961D31;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s
@@ -369,12 +369,12 @@ header .header-content .header-content-inner p {
 }
 
 .btn-primary.disabled, .btn-primary.disabled.active, .btn-primary.disabled.focus, .btn-primary.disabled:active, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled], .btn-primary[disabled].active, .btn-primary[disabled].focus, .btn-primary[disabled]:active, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary.active, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover {
-    background-color: #7A291E;
-    border-color: #7A291E
+    background-color: #961D31;
+    border-color: #961D31
 }
 
 .btn-primary .badge {
-    color: #7A291E;
+    color: #961D31;
     background-color: #fff
 }
 
