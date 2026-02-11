@@ -1,0 +1,796 @@
+/* Da Vinci / Vaporwave Fusion Theme */
+
+:root {
+    --paper: #1a1a1a; /* Darker, "Dark Mode Vellum" for Neon pop */
+    --paper-transparent: rgba(30, 30, 30, 0.6);
+    --ink: #e0e0e0; /* Inverted Ink */
+    --ink-light: #a0a0a0;
+    --neon-cyan: #00f0ff;
+    --neon-cyan-glow: rgba(0, 240, 255, 0.5);
+    --neon-pink: #ff00ff; /* Secondary Vaporwave accent */
+    --font-script: 'Rajdhani', sans-serif; /* Squared/Tech Aesthetic */
+    --font-body: 'Space Mono', monospace; /* Tech/Typewriter Hybrid */
+    /* Hand-drawn border radius presets */
+    --radius-organic: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    --radius-sketchy: 2% 98% 1% 99% / 99% 2% 98% 1%;
+    --radius-symmetrical: 30px; /* New symmetrical curve */
+}
+
+/* Base Styles */
+html, body {
+    width: 100%;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    overflow-x: hidden;
+}
+
+/* Global Noise Texture (Static Interference) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('../img/noise.svg');
+    opacity: 0.15; /* Increased for static effect */
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Background Geometry Container */
+.bg-fixed-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* Float Animation -> Zero-G Levitation (Icons Only) */
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    33% { transform: translate(3px, -12px); }
+    66% { transform: translate(-3px, -8px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Rotate Animation -> Complex Orbit */
+@keyframes rotate-slow {
+    0% { transform: translate(-50%, -50%) rotate(45deg) scale(1); }
+    50% { transform: translate(-50%, -50%) rotate(225deg) scale(1.1); border-color: var(--neon-cyan); box-shadow: 0 0 25px var(--neon-cyan-glow); }
+    100% { transform: translate(-50%, -50%) rotate(405deg) scale(1); }
+}
+
+/* Resume Section - Cyber Ring Effect */
+.call-to-action {
+    position: relative;
+    padding: 60px 0;
+    transition: all 0.4s;
+    overflow: visible; /* Allow rings to expand beyond container */
+}
+
+.call-to-action h2, .call-to-action a {
+    position: relative;
+    z-index: 2; /* Keep content above rings */
+}
+
+.call-to-action::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 250px; height: 250px;
+    border: 1px solid var(--neon-cyan);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 15px var(--neon-cyan-glow);
+    z-index: 1;
+}
+
+.call-to-action::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 280px; height: 280px;
+    border: 1px dashed var(--neon-pink);
+    border-radius: 45%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.call-to-action:hover::before,
+.call-to-action.scroll-active::before {
+    width: 300px; height: 300px;
+    opacity: 0.6;
+}
+
+.call-to-action:hover::after,
+.call-to-action.scroll-active::after {
+    opacity: 0.8;
+    width: 340px; height: 340px;
+    animation: rotate-slow 8s cubic-bezier(0.45, 0, 0.55, 1) infinite; /* Matching variable swirl */
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-script);
+    color: var(--neon-cyan);
+    font-weight: 400; 
+    text-shadow: 0 0 10px var(--neon-cyan-glow);
+}
+
+h1 { font-size: 5rem; letter-spacing: -2px; }
+h2 { font-size: 3.5rem; }
+h3 { font-size: 2rem; color: var(--ink); }
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Links - Scoped to avoid affecting UI elements */
+a {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+a:hover, a:focus {
+    color: var(--neon-pink);
+    text-decoration: none;
+    text-shadow: 0 0 8px rgba(255, 0, 255, 0.6);
+}
+
+/* Add underlines only to content links */
+p a, .post-tile .content a {
+    border-bottom: 1px dashed rgba(0, 240, 255, 0.3);
+}
+
+p a:hover, .post-tile .content a:hover {
+    border-bottom: 1px solid var(--neon-pink);
+}
+
+a.navbar-brand {
+    border-bottom: none;
+}
+
+/* Stable Float Animation (For Cards) */
+@keyframes float-stable {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Vellum Card Effect -> "Holographic Vellum" */
+.vellum-card {
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.05), inset 0 0 30px rgba(0, 240, 255, 0.05);
+    padding: 30px;
+    border-radius: var(--radius-symmetrical);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: float-stable 6s ease-in-out infinite; /* Use stable float */
+}
+
+.vellum-card::after {
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    border: 1px dashed var(--neon-cyan);
+    border-radius: 25px; /* Symmetrical inner border */
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.vellum-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+    border-color: var(--neon-pink);
+}
+
+.vellum-card:hover::after {
+    border-color: var(--neon-pink);
+}
+
+/* Navbar - Floating Glass Capsule */
+.navbar-default {
+    background: transparent;
+    border: none;
+    padding: 20px 0;
+    transition: padding 0.5s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.5s ease;
+}
+
+.navbar-default .container-fluid {
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease;
+    border-bottom: 1px dashed rgba(0, 240, 255, 0.3); /* Default state etched line */
+}
+
+/* Scrolled State */
+.navbar-default.affix {
+    padding: 10px 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.navbar-default .navbar-header .navbar-brand {
+    color: var(--neon-cyan);
+    font-family: var(--font-script);
+    font-size: 1.6rem;
+    padding-left: 20px;
+    text-shadow: 0 0 5px var(--neon-cyan-glow);
+    transition: all 0.3s ease;
+}
+
+.navbar-default .navbar-header .navbar-brand:hover,
+.navbar-default .navbar-header .navbar-brand:focus {
+    color: var(--neon-pink) !important;
+    text-shadow: 0 0 8px var(--neon-pink);
+}
+
+.navbar-default .nav > li > a {
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px 20px;
+    /* Remove global transition to prevent resize interpolation lag */
+    border-bottom: 1px solid transparent; /* invisible placeholder */
+}
+
+/* Active/Hover State - Global Base */
+.navbar-default .nav > li > a::after { display: none; }
+
+.navbar-default .nav > li > a:hover,
+.navbar-default .nav > li.active > a {
+    color: var(--neon-pink) !important;
+    text-shadow: none;
+    background: transparent !important;
+}
+
+/* Indicator dot */
+.navbar-default .nav > li > a::before {
+    content: '•';
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    color: var(--neon-pink);
+    font-size: 1.5rem;
+    line-height: 0;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    text-shadow: none;
+    opacity: 0; /* Default hidden */
+}
+
+/* Only show dot on hover/active in Desktop explicitly */
+@media (min-width: 768px) {
+    .navbar-default .nav > li > a:hover::before,
+    .navbar-default .nav > li.active > a::before {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.navbar-default .nav > li > a:hover::before,
+.navbar-default .nav > li.active > a::before {
+    /* Kept for transition logic, but visibility controlled by media query below */
+}
+
+/* Desktop: Capsule Effect & Hover Fixes */
+@media (min-width: 768px) {
+    .navbar-default.affix .container-fluid {
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(12px) saturate(180%);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        border-radius: 50px;
+        margin: 10px 5%;
+        width: 90%;
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+        border-bottom: none; /* Remove full width line when capsule */
+        transition: all 0.3s ease; /* Faster capsule transition */
+    }
+
+    .navbar-default .nav > li > a:hover,
+    .navbar-default .nav > li.active > a {
+        background: transparent !important;
+        border-bottom: 1px solid transparent; /* Prevent layout jump */
+        transition: color 0.2s ease; /* Snappy desktop hover */
+    }
+}
+
+/* Mobile: Full Width Glass + Readable Dropdown */
+@media (max-width: 767px) {
+    /* Apply capsule style to BOTH affix (scrolled) and default states */
+    .navbar-default .container-fluid {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--neon-cyan);
+        border-radius: 20px;
+        margin: 10px;
+        width: auto;
+        padding: 0;
+        box-shadow: 0 0 20px var(--neon-cyan-glow);
+        overflow: hidden;
+    }
+    
+    .navbar-toggle {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        transform: scale(0.98); /* Reduce dimensions by 2% to prevent clipping */
+        margin-right: 15px; /* Ensure clearance from curved edge */
+        border: none;
+        background: transparent; /* Remove default background */
+    }
+
+    .navbar-toggle:hover, .navbar-toggle:focus {
+        background: transparent !important; /* Ensure no background on hover */
+    }
+
+    .navbar-toggle .icon-bar {
+        background-color: var(--neon-cyan);
+        box-shadow: 0 0 5px var(--neon-cyan-glow);
+        transition: all 0.3s ease;
+    }
+
+    .navbar-toggle:hover .icon-bar {
+        background-color: var(--neon-pink);
+        box-shadow: 0 0 8px var(--neon-pink);
+    }
+    
+    .navbar-brand {
+        padding: 10px 15px; /* Match toggle alignment */
+        height: auto;
+    }
+    
+    /* Constrained dashed line via pseudo-element */
+    .navbar-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+        right: 20px;
+        border-bottom: 1px dashed var(--neon-cyan);
+    }
+    
+    .navbar-collapse {
+        background: #111;
+        border-top: none;
+        box-shadow: none;
+        max-height: 80vh;
+        margin: 0 !important;
+        padding: 0;
+        width: 100% !important;
+        /* Ensure border consistency */
+        border-radius: 0 0 20px 20px;
+    }
+    
+    .navbar-default .nav > li > a {
+        padding: 15px 20px;
+        border-bottom: 1px dashed rgba(0, 240, 255, 0.1) !important; /* Force separator in mobile */
+        transition: color 0.2s ease, border-color 0.2s ease; /* Fast, explicit mobile transition */
+    }
+    
+    .navbar-default .nav > li > a:hover,
+    .navbar-default .nav > li.active > a {
+        border-bottom: 1px solid var(--neon-pink) !important;
+        color: var(--neon-pink) !important;
+        background: transparent !important; /* Remove white highlight */
+        transition: none !important; /* Eliminate lag on mobile hover state activation */
+    }
+
+    /* Smoothly hide desktop dot in mobile without layout shift */
+    .navbar-default .nav > li > a::before {
+        transform: translateX(-50%) scale(0) !important;
+        opacity: 0 !important;
+    }
+    
+}
+
+/* Header */
+header {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden; /* Contain the 102% zoom background */
+    background: #000;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: -3.5%; left: -3.5%; width: 107%; height: 107%;
+    /* Cyan/Dark Overlay for Vaporwave vibe */
+    background: linear-gradient(rgba(10, 10, 20, 0.86), rgba(0, 0, 0, 0.51)), url('../img/header.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Prevent stacking/tiling */
+    filter: blur(1.5px);
+    z-index: 0;
+    pointer-events: none; /* Ensure clicks pass through */
+}
+
+header .header-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100vh; /* Restore full height flex container */
+    display: flex; /* Restore Flexbox */
+    align-items: center; /* Vertical Center */
+    justify-content: center; /* Horizontal Center */
+    text-align: center; /* Ensure text centering */
+}
+
+header .header-content-inner {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header .pic {
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid var(--neon-cyan);
+    padding: 5px;
+    background: rgba(0,0,0,0.5);
+    margin-bottom: 25px;
+    box-shadow: 0 0 20px var(--neon-cyan-glow);
+    transition: all 0.5s ease;
+    filter: grayscale(0.25) brightness(0.9); /* Muted state - reduced effect */
+}
+
+header .pic:hover {
+    transform: scale(1.1);
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+    filter: grayscale(0) brightness(1); /* Full color on hover */
+}
+
+header p {
+    display: table; /* Force stacking while hugging content */
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    padding: 10px 30px;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 240, 255, 0.1);
+    margin: 20px auto 40px; /* Auto margins center display: table */
+}
+
+/* Buttons - Cyber Stamp */
+.btn-primary {
+    background: rgba(0, 240, 255, 0.1);
+    color: var(--neon-cyan);
+    border: 2px solid var(--neon-cyan);
+    border-radius: 0; /* Squared edges */
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    padding: 15px 45px;
+    position: relative;
+    overflow: hidden;
+    z-index: 100; /* Ensure clickable */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 10px var(--neon-cyan-glow);
+    text-shadow: 0 0 5px var(--neon-cyan-glow);
+    cursor: pointer; /* Ensure pointer cursor */
+}
+
+.btn-primary:focus, .btn-primary.focus {
+    color: var(--neon-cyan);
+    background-color: rgba(0, 240, 255, 0.15);
+    border-color: var(--neon-cyan);
+    outline: none;
+    box-shadow: 0 0 15px var(--neon-cyan-glow);
+}
+
+.btn-primary:active, .btn-primary.active {
+    color: var(--paper);
+    background-color: var(--neon-cyan);
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.btn-primary::before { display: none; }
+
+.btn-primary:hover {
+    color: #fff;
+    border-color: var(--neon-cyan);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--neon-cyan), inset 0 0 10px var(--neon-cyan);
+    background: rgba(0, 240, 255, 0.3);
+    text-shadow: none;
+}
+
+
+/* Skills / Artes - Cyber Rings */
+.service-box {
+    padding: 40px 20px;
+    transition: all 0.4s;
+    position: relative;
+}
+
+.service-box i {
+    font-size: 3rem; 
+    color: var(--ink);
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Ring 1 - Static */
+.service-box::before {
+    content: '';
+    position: absolute;
+    top: 35%; left: 50%;
+    width: 80px; height: 80px;
+    border: 1px solid var(--neon-cyan);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+    transition: all 0.5s ease;
+    box-shadow: 0 0 10px var(--neon-cyan-glow);
+}
+
+/* Ring 2 - Dynamic */
+.service-box::after {
+    content: '';
+    position: absolute;
+    top: 35%; left: 50%;
+    width: 90px; height: 90px;
+    border: 1px dashed var(--neon-pink);
+    border-radius: 45%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 0;
+    transition: all 0.5s ease;
+    will-change: transform, border-color; /* Optimize for complex animation */
+}
+
+/* Floating Icons Animation */
+.service-box i {
+    animation: float 5s ease-in-out infinite;
+}
+
+/* Stagger the float animations for organic feel */
+.col-lg-3:nth-child(1) .service-box i { animation-delay: 0s; }
+.col-lg-3:nth-child(2) .service-box i { animation-delay: 1.2s; }
+.col-lg-3:nth-child(3) .service-box i { animation-delay: 2.4s; }
+.col-lg-3:nth-child(4) .service-box i { animation-delay: 3.6s; }
+
+.service-box:hover i,
+.service-box.scroll-active i {
+    color: var(--neon-cyan);
+    transform: scale(1.1);
+    text-shadow: 0 0 15px var(--neon-cyan-glow);
+    /* Pause float on hover for stability */
+    animation-play-state: paused;
+}
+
+.service-box:hover::before,
+.service-box.scroll-active::before {
+    width: 100px; height: 100px;
+    opacity: 0.8;
+}
+
+.service-box:hover::after,
+.service-box.scroll-active::after {
+    opacity: 1;
+    width: 130px; height: 130px; /* Slightly larger expansion */
+    animation: rotate-slow 4s cubic-bezier(0.45, 0, 0.55, 1) infinite; /* Variable speed "swirl" */
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.service-box p {
+    color: var(--ink-light);
+    transition: color 0.3s;
+}
+
+.service-box:hover p,
+.service-box.scroll-active p {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+/* Text Colors */
+.text-muted {
+    color: var(--ink-light) !important;
+}
+
+.text-primary {
+    color: var(--neon-cyan) !important;
+}
+
+/* Observations / Posts */
+#recent-posts {
+    background: none;
+    border: none;
+    padding: 50px 0;
+}
+
+.scrolling-wrapper-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.scrolling-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px;
+    gap: 20px;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scrolling-wrapper::-webkit-scrollbar-thumb {
+    background: var(--neon-cyan);
+    border-radius: 4px;
+}
+
+.scrolling-wrapper::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+}
+
+.post-tile {
+    flex: 0 0 300px;
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 2px;
+    padding: 20px;
+    text-decoration: none !important;
+    color: var(--ink) !important;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+    transform: none;
+}
+
+.post-tile:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px var(--neon-cyan-glow);
+    transform: translateY(-5px);
+    z-index: 10;
+}
+
+.post-tile .date {
+    font-size: 0.8rem;
+    color: var(--neon-cyan);
+    text-align: right;
+    font-family: var(--font-body);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.post-tile .content {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.4;
+    flex-grow: 1;
+    margin-bottom: 15px;
+}
+
+.post-tile .handle {
+    font-family: var(--font-script);
+    font-size: 1.2rem;
+    text-align: right;
+    color: var(--ink-light);
+}
+
+.post-tile.repost {
+    border-left: 5px solid var(--neon-cyan);
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.cyan-pulse {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 50%;
+    animation: ink-pulse 1.5s infinite;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+@keyframes ink-pulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* Contact Icons */
+.sr-contact {
+    font-size: 2.5rem;
+    color: var(--ink-light);
+    transition: all 0.3s ease;
+}
+
+.sr-contact:hover {
+    color: var(--neon-cyan);
+    transform: scale(1.1) rotate(-5deg);
+    text-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* Sections */
+section {
+    padding: 80px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.bg-dark {
+    background: transparent;
+    color: var(--ink);
+}
+
+.text-faded {
+    color: var(--ink-light);
+}
+
+#about .text-faded {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+hr {
+    border-color: var(--neon-cyan);
+    border-width: 2px;
+    max-width: 50px;
+    opacity: 0.8;
+    box-shadow: 0 0 5px var(--neon-cyan);
+}
+
+header hr {
+    max-width: 50px; /* Revert to standard size */
+    width: auto;
+    display: block;
+    clear: both;
+}
+
+hr.light {
+    border-color: var(--ink-light);
+    box-shadow: none;
+}
+
+::selection {
+    background: var(--neon-cyan);
+    color: #000;
+}
+
+/* CRITICAL VISIBILITY OVERRIDES */
+.sr-icons, .sr-button, .sr-contact {
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 1px;
+    animation: fade-in-up 1.5s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
